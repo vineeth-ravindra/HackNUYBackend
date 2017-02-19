@@ -70,7 +70,9 @@ module.exports = function(app) {
     }
     function newEquasion(req,res) {
         var newEquasion  = req.body;
-        if(newEquasion) {
+
+        if(newEquasion!=null) {
+
             newEquasion = Object.keys(newEquasion)[0];
             newEquasion = newEquasion.replaceAll("?","");
             newEquasion = newEquasion.replaceAll("(","");
@@ -85,9 +87,10 @@ module.exports = function(app) {
                 pointB = point2;
                 console.log(newEquasion);
                 res.send("Ok");
+                return;
             }
         }
-        res.send(404);
+        res.sendStatus(404);
     }
 
 };
