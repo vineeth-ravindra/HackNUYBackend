@@ -74,7 +74,8 @@ module.exports = function(app) {
 	console.log("New queasion is ",newEquasion);
         if(newEquasion!=null) {
             newEquasion = newEquasion.split("/");
-            if (newEquasion[1] == "0") {
+            var temp = newEquasion[1].replace(/[^0-9]+/g, "");
+            if (temp == "0") {
                 type = "distance";
             } else {
                 type = "vector";
