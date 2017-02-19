@@ -3,6 +3,13 @@
  */
 module.exports = function(app) {
     var equasions = ["Hello World"];
+    var pointA = [1,1,1];
+    var pointB = [2,2,2];
+    String.prototype.replaceAll = function(search, replacement) {
+        var target = this;
+        return target.split(search).join(replacement);
+    };
+
 
     app.post("/api/newFormula",newEquasion);
     app.get("/api/latestFormula",getLatest);
@@ -19,27 +26,27 @@ module.exports = function(app) {
     }
 
     function getx1(req,res) {
-        res.send("1");
+        res.send(pointA[0]);
     }
 
     function gety1(req,res) {
-        res.send("2");
+        res.send(pointA[1]);
     }
 
     function getz1(req,res) {
-        res.send("3");
+        res.send(pointA[2]);
     }
 
 
     function getx2(req,res) {
-        res.send("3");
+        res.send(pointB[0]);
     }
 
     function gety2(req,res) {
-        res.send("2");
+        res.send(pointB[1]);
     }
     function getz2(req,res) {
-        res.send("1");
+        res.send(pointB[2]);
     }
 
 
@@ -63,9 +70,24 @@ module.exports = function(app) {
     }
     function newEquasion(req,res) {
         var newEquasion  = req.body;
-        console.log(newEquasion);
-        equasions.push(newEquasion);
-        res.send("Ok");
+        if(newEquasion) {
+            newEquasion = Object.keys(newEquasion)[0];
+            newEquasion = newEquasion.replaceAll("?","");
+            newEquasion = newEquasion.replaceAll("(","");
+            newEquasion = newEquasion.replaceAll(")","");
+            newEquasion = newEquasion.split('-');
+            var point1 = newEquasion[0];
+            var point2 = newEquasion[1];
+            point1 = point1.split(",");
+            point2 = point2.split(",");
+            if (point1.length >2 && point2.length >2) {
+                pointA = point1;
+                pointB = point2;
+                console.log(newEquasion);
+                res.send("Ok");
+            }
+        }
+        res.send(404);
     }
 
 };
