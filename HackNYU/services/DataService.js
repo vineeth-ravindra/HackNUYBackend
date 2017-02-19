@@ -3,8 +3,8 @@
  */
 module.exports = function(app) {
     var equasions = ["Hello World"];
-    var pointA = [1,1,1];
-    var pointB = [2,2,2];
+    var pointA = ['1','1','1'];
+    var pointB = ['2','2','2''];
     String.prototype.replaceAll = function(search, replacement) {
         var target = this;
         return target.split(search).join(replacement);
