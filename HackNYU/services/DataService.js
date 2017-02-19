@@ -74,12 +74,14 @@ module.exports = function(app) {
         if(newEquasion!=null) {
 
             newEquasion = Object.keys(newEquasion)[0];
+            newEquasion = newEquasion.replaceAll("0?","");
             newEquasion = newEquasion.replaceAll("?","");
             newEquasion = newEquasion.replaceAll("(","");
-            newEquasion = newEquasion.replaceAll(")","");
-            newEquasion = newEquasion.split('-');
+            newEquasion = newEquasion.split(')-');
             var point1 = newEquasion[0];
             var point2 = newEquasion[1];
+            point1 = point1.replaceAll(")","");
+            point2 = point2.replaceAll(")","");
             point1 = point1.split(",");
             point2 = point2.split(",");
             if (point1.length >2 && point2.length >2) {
