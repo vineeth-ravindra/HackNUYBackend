@@ -26,27 +26,27 @@ module.exports = function(app) {
     }
 
     function getx1(req,res) {
-        res.send(pointA[0]);
+        res.send(str(pointA[0]));
     }
 
     function gety1(req,res) {
-        res.send(pointA[1]);
+        res.send(str(pointA[1]));
     }
 
     function getz1(req,res) {
-        res.send(pointA[2]);
+        res.send(str(pointA[2]));
     }
 
 
     function getx2(req,res) {
-        res.send(pointB[0]);
+        res.send(str(pointB[0]));
     }
 
     function gety2(req,res) {
-        res.send(pointB[1]);
+        res.send(str(pointB[1]));
     }
     function getz2(req,res) {
-        res.send(pointB[2]);
+        res.send(str(pointB[2]));
     }
 
 
@@ -70,7 +70,7 @@ module.exports = function(app) {
     }
     function newEquasion(req,res) {
         var newEquasion  = req.body;
-
+	console.log("New queasion is ",newEquasion);
         if(newEquasion!=null) {
 
             newEquasion = Object.keys(newEquasion)[0];
