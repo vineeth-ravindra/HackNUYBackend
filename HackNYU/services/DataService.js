@@ -73,6 +73,7 @@ module.exports = function(app) {
         var newEquasion  = req.body;
 	console.log("New queasion is ",newEquasion);
         if(newEquasion!=null) {
+            newEquasion = Object.keys(newEquasion)[0];
             newEquasion = newEquasion.split("/");
             var temp = newEquasion[1].replace(/[^0-9]+/g, "");
             if (temp == "0") {
@@ -81,7 +82,6 @@ module.exports = function(app) {
                 type = "vector";
             }
             newEquasion = newEquasion[0];
-            newEquasion = Object.keys(newEquasion)[0];
             newEquasion = newEquasion.replaceAll("0?","");
             newEquasion = newEquasion.replaceAll("0","");
             newEquasion = newEquasion.replaceAll("?","");
