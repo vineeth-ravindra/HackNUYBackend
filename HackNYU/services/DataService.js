@@ -75,6 +75,7 @@ module.exports = function(app) {
 
             newEquasion = Object.keys(newEquasion)[0];
             newEquasion = newEquasion.replaceAll("0?","");
+            newEquasion = newEquasion.replaceAll("0","");
             newEquasion = newEquasion.replaceAll("?","");
             newEquasion = newEquasion.replaceAll("(","");
             newEquasion = newEquasion.split(')-');
