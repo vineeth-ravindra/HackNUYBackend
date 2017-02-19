@@ -5,6 +5,7 @@ module.exports = function(app) {
     var equasions = ["Hello World"];
     var pointA = ['1','1','1'];
     var pointB = ['2','2','2'];
+    var type = "distance";
     String.prototype.replaceAll = function(search, replacement) {
         var target = this;
         return target.split(search).join(replacement);
@@ -22,7 +23,7 @@ module.exports = function(app) {
     app.get("/api/action",gettype);
 
     function gettype(req,res) {
-        res.send("distance");
+        res.send(type);
     }
 
     function getx1(req,res) {
@@ -72,7 +73,13 @@ module.exports = function(app) {
         var newEquasion  = req.body;
 	console.log("New queasion is ",newEquasion);
         if(newEquasion!=null) {
-
+            newEquasion = newEquasion.split("/");
+            if (newEquasion[1] == "0") {
+                type = "distance";
+            } else {
+                type = "vector";
+            }
+            newEquasion = newEquasion[0];
             newEquasion = Object.keys(newEquasion)[0];
             newEquasion = newEquasion.replaceAll("0?","");
             newEquasion = newEquasion.replaceAll("0","");
