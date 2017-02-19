@@ -85,7 +85,8 @@ module.exports = function(app) {
             if (point1.length >2 && point2.length >2) {
                 pointA = point1;
                 pointB = point2;
-                console.log(newEquasion);
+                console.log(pointA);
+                console.log(pointB);
                 res.send("Ok");
                 return;
             }
