@@ -5,15 +5,20 @@ module.exports = function(app) {
     var equasions = ["Hello World"];
 
     app.post("/api/newFormula",newEquasion);
-    app.get("/",home);
     app.get("/api/latestFormula",getLatest);
-
+    app.get("/",home);
 
     function getLatest(req,res) {
-        if (equasions.length > 1) {
-            res.send(equasions[0])
-        } else
-            res.sendStatus(404)
+        var a = {
+            "action" : "distance",
+            "x1" : 1,
+            "y1" : 5,
+            "z1" : -5,
+            "x2" : 3,
+            "y2" : 2,
+            "z2" : 5,
+        };
+        res.send(a)
     }
     function home(req,res) {
         res.send("Hello Odin");
